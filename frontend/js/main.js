@@ -1,3 +1,18 @@
+//User coutner using Azure Functions and Cosmos DB
+const functionApi = '';
+
+const getVisitorCount = () => {
+  let count = -1;
+  fetch(functionApi).then(response => { 
+    return response.json() }).then(response =>{
+      console.log("Website called function API");
+      count = response.count;
+      document.getElementById("visitor-count").innerText = count;
+  }).catch(function(error) {
+    console.log("Error calling function API: " + error);
+  });
+}
+
 // Scroll reveal
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
