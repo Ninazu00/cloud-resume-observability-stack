@@ -4,19 +4,41 @@ services:
     build: .
     environment:
       - APP_NAME=Backend1
+      - DATABASE_URL=postgresql://admin:secret@postgres:5432/visitdb
     ports:
       - "3001:3000"
+    depends_on:
+      - postgres
 
   app2:
     build: .
     environment:
       - APP_NAME=Backend2
+      - DATABASE_URL=postgresql://admin:secret@postgres:5432/visitdb
     ports:
       - "3002:3000"
+    depends_on:
+      - postgres
 
   app3:
     build: .
     environment:
       - APP_NAME=Backend3
+      - DATABASE_URL=postgresql://admin:secret@postgres:5432/visitdb
     ports:
       - "3003:3000"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=visitdb
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

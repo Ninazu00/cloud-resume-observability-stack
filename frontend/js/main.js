@@ -1,17 +1,23 @@
-//User coutner using Azure Functions and Cosmos DB
-const functionApi = '';
+const recordAndGetVisitorCount = async () => {
+  try {
+    const response = await fetch('/api/visit', { method: 'POST' });
+    
+    // If rate limited, fallback to just getting the count without recording a new visit
+    if (response.status === 429) {
+      const fallback = await fetch('/api/visits');
+      const data = await fallback.json();
+      document.getElementById('visitor-count').innerText = data.count;
+      return;
+    }
 
-const getVisitorCount = () => {
-  let count = -1;
-  fetch(functionApi).then(response => { 
-    return response.json() }).then(response =>{
-      console.log("Website called function API");
-      count = response.count;
-      document.getElementById("visitor-count").innerText = count;
-  }).catch(function(error) {
-    console.log("Error calling function API: " + error);
-  });
-}
+    const data = await response.json();
+    document.getElementById('visitor-count').innerText = data.count;
+  } catch (error) {
+    console.log('Error calling visit API: ' + error);
+  }
+};
+
+recordAndGetVisitorCount();
 
 // Scroll reveal
 const reveals = document.querySelectorAll('.reveal');

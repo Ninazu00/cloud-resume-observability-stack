@@ -27,6 +27,7 @@
     "escape-html": "^1.0.3",
     "etag": "^1.8.1",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.3.0",
     "finalhandler": "^2.1.1",
     "forwarded": "^0.2.0",
     "fresh": "^2.0.0",
@@ -53,6 +54,7 @@
     "once": "^1.4.0",
     "parseurl": "^1.3.3",
     "path-to-regexp": "^8.3.0",
+    "pg": "^8.20.0",
     "proxy-addr": "^2.0.7",
     "qs": "^6.15.0",
     "range-parser": "^1.2.1",
@@ -73,7 +75,6 @@
     "vary": "^1.1.2",
     "wrappy": "^1.0.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
