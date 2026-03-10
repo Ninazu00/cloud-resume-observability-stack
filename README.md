@@ -7,5 +7,5 @@ My own azure resume
 - node.js container used for backend server
 - nginx used as load balancer
 - testing locally with docker-compose for node.js containers and nginx as a proxy
-- set up minikube to test out on a local cluster
+- testing Postgre SQL database and tested locally using docker-compose
 - 
