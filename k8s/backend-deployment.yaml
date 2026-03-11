@@ -15,8 +15,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: resume-backend:latest
-          imagePullPolicy: Never
+          image: mohamedaymanacr.azurecr.io/resume-backend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           env:
