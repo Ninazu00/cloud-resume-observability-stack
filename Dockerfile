@@ -8,7 +8,7 @@ RUN npm ci --omit=dev
 FROM node:20-slim
 WORKDIR /app
 COPY --from=builder /app/backend/node_modules ./backend/node_modules
-COPY backend/ ./backend/
+COPY backend/server.js ./backend/server.js
 COPY frontend/ ./frontend/
 EXPOSE 3000
 USER node
